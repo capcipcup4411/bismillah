@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Products | PT KARSA JAYA KARYA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --charcoal: #1a1a18; --charcoal-mid: #2e2e2a;
+      --warm-white: #f5f2eb; --cream: #ede9df;
+      --amber: #c8860a; --amber-light: #e9a825;
+      --text-body: #3a3a35; --text-muted: #7a7a72;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--warm-white); color: var(--text-body); overflow-x: hidden; }
+    html[lang="ar"] body { font-family: 'Segoe UI', Tahoma, Arial, sans-serif; }
+    html[dir="rtl"] nav { flex-direction: row-reverse; }
+    html[dir="rtl"] .nav-links { flex-direction: row-reverse; }
+    html[dir="rtl"] .nav-right { flex-direction: row-reverse; }
+    html[dir="rtl"] .nav-lang-dropdown { right: auto; left: 0; }
+    html[dir="rtl"] .nav-dropdown-menu { left: auto; right: 0; }
+    html[dir="rtl"] footer { flex-direction: row-reverse; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(26,26,24,0.96); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 68px; border-bottom: 1px solid rgba(43,42,41,0.2); }
+    .nav-logo { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo img { height: 50px; width: auto; object-fit: cover; border-radius: 50%; }
+    .nav-logo-text { font-family: 'Playfair Display', serif; color: var(--amber-light); font-size: 18px; font-weight: 700; letter-spacing: 0.05em; line-height: 1.3; }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a { color: rgba(245,242,235,0.8); text-decoration: none; font-size: 14px; letter-spacing: 0.04em; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--amber-light); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: var(--charcoal); border: 1px solid rgba(200,134,10,0.2); min-width: 200px; border-radius: 4px; overflow: hidden; }
+    .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+    .nav-dropdown-menu a { display: block; padding: 10px 18px; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 13px; }
+    .nav-right { display: flex; align-items: center; gap: 20px; }
+    .nav-lang { position: relative; }
+    .nav-lang-btn { background: none; border: 1px solid rgba(200,134,10,0.35); color: rgba(245,242,235,0.8); font-size: 13px; padding: 5px 12px; border-radius: 3px; cursor: pointer; display: flex; align-items: center; gap: 6px; font-family: inherit; }
+    .nav-lang-btn img { width: 16px; height: 12px; object-fit: cover; }
+    .nav-lang-dropdown { display: none; position: absolute; top: 100%; right: 0; background: var(--charcoal); border: 1px solid rgba(200,134,10,0.2); min-width: 160px; border-radius: 4px; overflow: hidden; margin-top: 4px; }
+    .nav-lang:hover .nav-lang-dropdown { display: block; }
+    .nav-lang-dropdown a { display: flex; align-items: center; gap: 8px; padding: 9px 14px; color: rgba(245,242,235,0.8); text-decoration: none; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.06); transition: background 0.15s; cursor: pointer; }
+    .nav-lang-dropdown a:hover { background: rgba(200,134,10,0.1); }
+    .nav-lang-dropdown a img { width: 18px; height: 13px; object-fit: cover; }
+    .nav-lang-dropdown a.active-lang { background: rgba(200,134,10,0.18); color: var(--amber-light); }
+    .btn-contact { background: var(--amber); color: #fff; padding: 9px 20px; border-radius: 3px; text-decoration: none; font-size: 13px; font-weight: 500; letter-spacing: 0.03em; transition: background 0.2s; }
+    .btn-contact:hover { background: var(--amber-light); }
+
+    /* PAGE HERO BANNER */
+    .page-banner {
+      margin-top: 68px;
+      background: var(--charcoal);
+      padding: 72px 48px 56px;
+      text-align: center;
+      border-bottom: 1px solid rgba(200,134,10,0.2);
+    }
+    .page-banner .section-label { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber); font-weight: 500; margin-bottom: 12px; }
+    html[lang="ar"] .page-banner .section-label { letter-spacing: 0; text-transform: none; font-size: 13px; }
+    .page-banner h1 { font-family: 'Playfair Display', serif; color: var(--warm-white); font-size: clamp(32px, 5vw, 52px); font-weight: 700; margin-bottom: 16px; }
+    html[lang="ar"] .page-banner h1 { font-family: inherit; }
+    .page-banner p { color: rgba(245,242,235,0.65); font-size: 16px; max-width: 520px; margin: 0 auto; line-height: 1.7; }
+    .banner-divider { width: 48px; height: 3px; background: var(--amber); margin: 20px auto 0; }
+
+    /* PRODUCTS LIST */
+    .products-page { background: var(--charcoal); padding: 80px 48px; }
+    .products-list { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 36px; }
+
+    .product-card {
+      background: var(--charcoal-mid);
+      border: 1px solid rgba(200,134,10,0.15);
+      border-radius: 8px; overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center;
+    }
+    .product-card:hover { border-color: var(--amber); transform: translateY(-4px); }
+    .product-card img { width: 100%; max-height: 320px; object-fit: cover; display: block; }
+    .product-card-body { padding: 32px 36px 36px; }
+    .product-card-body h3 { font-family: 'Playfair Display', serif; color: var(--amber-light); font-size: 22px; font-style: italic; margin-bottom: 14px; }
+    html[lang="ar"] .product-card-body h3 { font-family: inherit; font-style: normal; }
+    .product-card-body p { color: rgba(245,242,235,0.7); font-size: 15px; line-height: 1.8; margin-bottom: 24px; }
+    .btn-details {
+      display: inline-block; background: transparent;
+      border: 1px solid var(--amber); color: var(--amber-light);
+      padding: 10px 28px; border-radius: 3px; font-size: 13px;
+      font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase;
+      text-decoration: none; transition: background 0.2s, color 0.2s;
+    }
+    html[lang="ar"] .btn-details { letter-spacing: 0; text-transform: none; }
+    .btn-details:hover { background: var(--amber); color: #fff; }
+
+    .product-eco { text-align: center; padding: 40px 0 0; font-family: 'Playfair Display', serif; color: var(--amber-light); font-size: 20px; font-style: italic; }
+    html[lang="ar"] .product-eco { font-family: inherit; font-style: normal; }
+
+    /* FOOTER */
+    footer { background: #111110; padding: 32px 48px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(200,134,10,0.15); }
+    footer p { color: rgba(245,242,235,0.4); font-size: 13px; }
+
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .page-banner, .products-page { padding-left: 24px; padding-right: 24px; }
+      .product-card-body { padding: 24px 20px 28px; }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="assets/images/logo1.png" alt="PT Karsa Jaya Karya">
+    <div class="nav-logo-text">PT KARSA JAYA KARYA</div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+    <li class="nav-dropdown">
+      <a href="products.html" class="active" data-i18n="nav_products">Products ▾</a>
+      <div class="nav-dropdown-menu">
+        <a href="cshell.html" data-i18n="prod_cshell">Coconut Shell Charcoal</a>
+        <a href="hardwood.html" data-i18n="prod_hardwood">Hardwood Charcoal</a>
+        <a href="coconut.html" data-i18n="prod_coconut">Coconut Charcoal Briquette</a>
+        <a href="bbq.html" data-i18n="prod_bbq">Barbecue Charcoal Briquette</a>
+      </div>
+    </li>
+    <li><a href="gallery.html" data-i18n="nav_gallery">Gallery</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="nav-lang">
+      <button class="nav-lang-btn">
+        <img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.5/flags/4x3/us.svg" alt="flag" id="activeFlagImg">
+        <span id="activeLangLabel">EN</span> ▾
+      </button>
+      <div class="nav-lang-dropdown">
+        <a onclick="setLang('ar')" id="lang-ar"><img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.5/flags/4x3/sa.svg" alt="AR"> العربية (SA)</a>
+        <a onclick="setLang('en')" id="lang-en" class="active-lang"><img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.5/flags/4x3/us.svg" alt="EN"> English (US)</a>
+        <a onclick="setLang('id')" id="lang-id"><img src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.5/flags/4x3/id.svg" alt="ID"> Bahasa Indonesia</a>
+      </div>
+    </div>
+    <a href="https://wa.me/6283189836748?text=I%27m%20interested%20in%20your%20product" class="btn-contact" target="_blank" data-i18n="nav_contact">Contact</a>
+  </div>
+</nav>
+
+<!-- BANNER -->
+<div class="page-banner">
+  <p class="section-label" data-i18n="products_label">What We Offer</p>
+  <h1 data-i18n="products_title">Our Products</h1>
+  <p data-i18n="products_subtitle">Explore our premium coconut charcoal briquettes and sustainable products tailored for your needs.</p>
+  <div class="banner-divider"></div>
+</div>
+
+<!-- PRODUCTS LIST -->
+<section class="products-page">
+  <div class="products-list">
+
+    <div class="product-card">
+      <img src="assets/images/cshell.png" alt="Coconut Shell Charcoal">
+      <div class="product-card-body">
+        <h3 data-i18n="prod_cshell_title">Coconut Shell Charcoal</h3>
+        <p data-i18n="prod_cshell_desc">Premium charcoal produced from natural coconut shells. Known for high heat output, long burning time, and low ash content. Suitable for shisha, grilling, and industrial applications.</p>
+        <a href="cshell.html" class="btn-details" data-i18n="btn_details">View Details</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="assets/images/hardwood3.png" alt="Hardwood Charcoal">
+      <div class="product-card-body">
+        <h3 data-i18n="prod_hardwood_title">Hardwood Charcoal</h3>
+        <p data-i18n="prod_hardwood_desc">Made from selected natural hardwood, providing stable heat and consistent performance. Easy to ignite with long-lasting burn, ideal for restaurants, barbecue use, and commercial cooking.</p>
+        <a href="hardwood.html" class="btn-details" data-i18n="btn_details">View Details</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="assets/images/coconut2.png" alt="Coconut Charcoal Briquette">
+      <div class="product-card-body">
+        <h3 data-i18n="prod_coconut_title">Coconut Charcoal Briquette</h3>
+        <p data-i18n="prod_coconut_desc">High-density briquettes made from compressed coconut shell charcoal. Delivers steady heat, minimal smoke, and low ash residue. Commonly used for shisha and premium heating purposes.</p>
+        <a href="coconut.html" class="btn-details" data-i18n="btn_details">View Details</a>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="assets/images/bbq.png" alt="Barbecue Charcoal Briquette">
+      <div class="product-card-body">
+        <h3 data-i18n="prod_bbq_title">Barbecue Charcoal Briquette</h3>
+        <p data-i18n="prod_bbq_desc">Uniform charcoal briquettes designed for efficient grilling. Provides even heat distribution, longer burning duration, and reliable performance for household and commercial barbecue needs.</p>
+        <a href="bbq.html" class="btn-details" data-i18n="btn_details">View Details</a>
+      </div>
+    </div>
+
+    <p class="product-eco" data-i18n="prod_eco">Eco-Friendly Fuel for Premium Performance</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p data-i18n="footer_copy">© 2025. All rights reserved. PT Karsa Jaya Karya.</p>
+  <p style="color:rgba(245,242,235,0.3);font-size:12px" data-i18n="footer_address">Ngimbang RT 03 RW 01, Ngimbang, Kabupaten Lamongan, Jawa Timur</p>
+</footer>
+
+<script>
+const T = {
+  en: {
+    nav_home:"Home", nav_products:"Products ▾", nav_gallery:"Gallery", nav_contact:"Contact",
+    prod_cshell:"Coconut Shell Charcoal", prod_hardwood:"Hardwood Charcoal", prod_coconut:"Coconut Charcoal Briquette", prod_bbq:"Barbecue Charcoal Briquette",
+    products_label:"What We Offer", products_title:"Our Products",
+    products_subtitle:"Explore our premium coconut charcoal briquettes and sustainable products tailored for your needs.",
+    prod_cshell_title:"Coconut Shell Charcoal",
+    prod_cshell_desc:"Premium charcoal produced from natural coconut shells. Known for high heat output, long burning time, and low ash content. Suitable for shisha, grilling, and industrial applications.",
+    prod_hardwood_title:"Hardwood Charcoal",
+    prod_hardwood_desc:"Made from selected natural hardwood, providing stable heat and consistent performance. Easy to ignite with long-lasting burn, ideal for restaurants, barbecue use, and commercial cooking.",
+    prod_coconut_title:"Coconut Charcoal Briquette",
+    prod_coconut_desc:"High-density briquettes made from compressed coconut shell charcoal. Delivers steady heat, minimal smoke, and low ash residue. Commonly used for shisha and premium heating purposes.",
+    prod_bbq_title:"Barbecue Charcoal Briquette",
+    prod_bbq_desc:"Uniform charcoal briquettes designed for efficient grilling. Provides even heat distribution, longer burning duration, and reliable performance for household and commercial barbecue needs.",
+    prod_eco:"Eco-Friendly Fuel for Premium Performance",
+    btn_details:"View Details",
+    footer_copy:"© 2025. All rights reserved. PT Karsa Jaya Karya.",
+    footer_address:"Ngimbang RT 03 RW 01, Ngimbang, Kabupaten Lamongan, Jawa Timur"
+  },
+  id: {
+    nav_home:"Beranda", nav_products:"Produk ▾", nav_gallery:"Galeri", nav_contact:"Kontak",
+    prod_cshell:"Arang Tempurung Kelapa", prod_hardwood:"Arang Kayu Keras", prod_coconut:"Briket Arang Kelapa", prod_bbq:"Briket Arang Barbekyu",
+    products_label:"Produk Kami", products_title:"Produk Unggulan",
+    products_subtitle:"Jelajahi briket arang kelapa premium dan produk berkelanjutan kami yang dirancang untuk kebutuhan Anda.",
+    prod_cshell_title:"Arang Tempurung Kelapa",
+    prod_cshell_desc:"Arang premium dari tempurung kelapa alami. Memiliki panas tinggi, waktu bakar lama, dan kadar abu rendah. Cocok untuk shisha, grill, dan kebutuhan industri.",
+    prod_hardwood_title:"Arang Kayu Keras",
+    prod_hardwood_desc:"Dibuat dari kayu keras pilihan yang menghasilkan panas stabil dan performa konsisten. Mudah dinyalakan dan tahan lama, cocok untuk restoran dan kebutuhan memasak komersial.",
+    prod_coconut_title:"Briket Arang Kelapa",
+    prod_coconut_desc:"Briket padat dari arang tempurung kelapa yang dipres. Menghasilkan panas stabil, asap minimal, dan abu rendah. Umumnya digunakan untuk shisha dan kebutuhan premium.",
+    prod_bbq_title:"Briket Arang Barbekyu",
+    prod_bbq_desc:"Briket arang dengan bentuk seragam untuk pembakaran efisien. Memberikan panas merata, tahan lama, dan performa andal untuk kebutuhan barbekyu rumah tangga maupun komersial.",
+    prod_eco:"Bahan Bakar Ramah Lingkungan untuk Performa Premium",
+    btn_details:"Lihat Detail",
+    footer_copy:"© 2025. Seluruh hak cipta dilindungi. PT Karsa Jaya Karya.",
+    footer_address:"Ngimbang RT 03 RW 01, Ngimbang, Kabupaten Lamongan, Jawa Timur"
+  },
+  ar: {
+    nav_home:"الرئيسية", nav_products:"المنتجات ▾", nav_gallery:"المعرض", nav_contact:"اتصل بنا",
+    prod_cshell:"فحم قشور جوز الهند", prod_hardwood:"فحم الخشب الصلب", prod_coconut:"فحم جوز الهند المضغوط", prod_bbq:"فحم الشواء المضغوط",
+    products_label:"ما نقدمه", products_title:"منتجاتنا",
+    products_subtitle:"استكشف فحم جوز الهند المضغوط ومنتجاتنا المستدامة المصممة لتلبية احتياجاتك.",
+    prod_cshell_title:"فحم قشور جوز الهند",
+    prod_cshell_desc:"فحم عالي الجودة مصنوع من قشور جوز الهند الطبيعية، يتميز بحرارة عالية واحتراق طويل ورماد منخفض. مناسب للشيشة والشواء والاستخدامات الصناعية.",
+    prod_hardwood_title:"فحم الخشب الصلب",
+    prod_hardwood_desc:"مصنوع من أخشاب طبيعية مختارة، يوفر حرارة مستقرة وأداءً ثابتًا. سهل الاشتعال وطويل الاحتراق، مثالي للمطاعم والاستخدام التجاري.",
+    prod_coconut_title:"فحم جوز الهند المضغوط",
+    prod_coconut_desc:"قوالب فحم عالية الكثافة مصنوعة من قشور جوز الهند المضغوطة. توفر حرارة ثابتة ودخانًا منخفضًا ورمادًا قليلاً، وتستخدم غالبًا للشيشة.",
+    prod_bbq_title:"فحم الشواء المضغوط",
+    prod_bbq_desc:"قوالب فحم مصممة للشواء بكفاءة عالية، توفر توزيعًا متساويًا للحرارة واحتراقًا طويلًا وأداءً موثوقًا.",
+    prod_eco:"وقود صديق للبيئة بأداء متميز",
+    btn_details:"عرض التفاصيل",
+    footer_copy:"© 2025 جميع الحقوق محفوظة. PT Karsa Jaya Karya.",
+    footer_address:"Ngimbang RT 03 RW 01, Ngimbang, Kabupaten Lamongan, Jawa Timur"
+  }
+};
+const LANG_META = {
+  en:{flag:'https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.5/flags/4x3/us.svg',label:'EN',dir:'ltr'},
+  id:{flag:'https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.5/flags/4x3/id.svg',label:'ID',dir:'ltr'},
+  ar:{flag:'https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/4.1.5/flags/4x3/sa.svg',label:'AR',dir:'rtl'}
+};
+function setLang(lang) {
+  const t=T[lang], meta=LANG_META[lang]; if(!t) return;
+  document.documentElement.lang=lang; document.documentElement.dir=meta.dir;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(t[k]!==undefined)el.textContent=t[k];});
+  document.getElementById('activeFlagImg').src=meta.flag;
+  document.getElementById('activeLangLabel').textContent=meta.label;
+  ['en','id','ar'].forEach(l=>{const el=document.getElementById('lang-'+l);if(el)el.classList.toggle('active-lang',l===lang);});
+  try{localStorage.setItem('lang',lang);}catch(e){}
+}
+try{const s=localStorage.getItem('lang');if(s&&T[s])setLang(s);}catch(e){}
+</script>
+</body>
+</html>
